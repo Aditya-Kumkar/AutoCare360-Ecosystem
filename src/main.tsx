@@ -99,7 +99,7 @@ function App(){
   if(showLanding)return <PublicLanding onBook={()=>{setShowLanding(false);go('Book a service');setModal('booking');}} onServices={()=>{setShowLanding(false);go('Book a service');}} onSignIn={()=>{setShowLanding(false);go('Overview');notify('Demo customer session opened. Real authentication is not connected.');}}/>;
   return <div className="customer-shell">
     <aside className={`sidebar ${mobileNav?'sidebar-open':''}`}>
-      <button className="brand" onClick={()=>go('Overview')}><span className="brand-mark"><Gauge size={22}/></span><span className="brand-text"><strong>auto care<span>360</span></strong><small>YOUR VEHICLE, IN GOOD HANDS</small></span><span className="close-nav" onClick={e=>{e.stopPropagation();setMobileNav(false);}}><X size={18}/></span></button>
+      <button className="brand" onClick={()=>setShowLanding(true)}><span className="brand-mark"><Gauge size={22}/></span><span className="brand-text"><strong>auto care<span>360</span></strong><small>YOUR VEHICLE, IN GOOD HANDS</small></span><span className="close-nav" onClick={e=>{e.stopPropagation();setMobileNav(false);}}><X size={18}/></span></button>
       <div className="portal-label">CUSTOMER PORTAL</div>
       <button className="garage-switch" onClick={()=>go('My vehicles')}><span className="switch-icon"><CarFront size={18}/></span><span><small>YOUR GARAGE</small><strong>{vehicles.length} registered vehicles</strong></span><ChevronDown size={15}/></button>
       <div className="nav-caption">YOUR ACCOUNT</div>
