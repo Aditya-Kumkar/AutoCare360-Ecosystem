@@ -105,8 +105,7 @@ function App(){
   const filteredVehicles=useMemo(()=>vehicles.filter(v=>`${v.make} ${v.model} ${v.plate}`.toLowerCase().includes(search.toLowerCase())),[vehicles,search]);
   const activeRepair=repairs[0];
   if(selectedRole&&roleWorkspace)return <RoleWorkspace role={selectedRole as 'Technician'|'Service Manager'|'Supplier'} onBack={()=>{setRoleWorkspace(false);setSelectedRole(null);setLoginPassword('');setShowRoleHome(true);}} onCustomerPreview={()=>{setRoleWorkspace(false);setSelectedRole(null);setShowRoleHome(false);setPage('Overview');}}/>;
-  if(selectedRole)return <RoleLogin role={selectedRole} email={loginEmail} setEmail={setLoginEmail} password={loginPassword} setPassword={setLoginPassword} onBack={()=>{setSelectedRole(null);setRoleWorkspace(false);setShowRoleHome(true);}} onSubmit={()=>{if(!loginEmail.trim()||!loginPassword){notify('Enter your email and password to continue.');return;}if(selectedRole==='Customer'){setSelectedRole(null);setRoleWorkspace(false);setShowRoleHome(false);setPage('Overview');notify('Demo customer portal opened. Real authentication is not connected.');}else setRoleWorkspace(true);}}/>;
-  if(showRoleHome)return <RoleHome onSelect={role=>{setSelectedRole(role);setRoleWorkspace(false);setLoginEmail('');setLoginPassword('');setShowRoleHome(false);}}/>;
+  if(showRoleHome)return <RoleHome onSelect={role=>{setSelectedRole(role);setLoginEmail('');setLoginPassword('');if(role==='Customer'){setRoleWorkspace(false);setShowRoleHome(false);setPage('Overview');}else{setRoleWorkspace(true);setShowRoleHome(false);}}}/>;
   if(showLanding)return <PublicLanding onBook={()=>{setShowLanding(false);go('Book a service');setModal('booking');}} onServices={()=>{setShowLanding(false);go('Book a service');}} onSignIn={()=>{setShowLanding(false);setShowRoleHome(true);}}/>;
   return <div className="customer-shell">
     <aside className={`sidebar ${mobileNav?'sidebar-open':''}`}>
