@@ -64,7 +64,7 @@ export default async function handler(req: any, res: any) {
       return json(res, 200, {
         ok: true,
         object: { name: data.name, label: data.label },
-        fields: data.fields.map(f => ({ name: f.name, label: f.label, type: f.type, createable: f.createable, updateable: f.updateable, required: !f.nillable && !f.createable === false, referenceTo: f.referenceTo ?? [] })),
+        fields: data.fields.map(f => ({ name: f.name, label: f.label, type: f.type, createable: f.createable, updateable: f.updateable, referenceTo: f.referenceTo ?? [] })),
       });
     }
 
