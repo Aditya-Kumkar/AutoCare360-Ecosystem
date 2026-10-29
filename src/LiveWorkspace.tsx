@@ -9,7 +9,7 @@ type AuthData={access_token?:string;error_description?:string;msg?:string;user?:
 type Me={ok:boolean;user:User;readable:Resource[];creatable:Resource[];editable:Resource[];deletable:Resource[]};
 const defaults:Record<Resource,Record<string,unknown>>={
  vehicle:{make:'Honda',model:'City',year:'2022',plate:'TN 09 AB 4421',fuel:'Petrol',odometer:28450,nickname:'Daily drive',lastService:'No service recorded'},
- appointment:{vehicleId:'PASTE-VEHICLE-UUID',service:'Routine maintenance',issue:'Scheduled service',date:'2026-11-01',time:'10:30 AM',status:'Pending confirmation',created:'Today'},
+ appointment:{vehicleId:'PASTE-VEHICLE-UUID',service:'Routine maintenance',issue:'Scheduled service',date:'2026-11-01',time:'10:30 AM',created:'Today'},
  repair:{vehicleId:'PASTE-VEHICLE-UUID',service:'Inspection',stage:'Booking received',update:'Booking received.',date:'2026-11-01',completion:'To be assessed'},
  estimate:{vehicleId:'PASTE-VEHICLE-UUID',repair:'PASTE-REPAIR-UUID',date:'2026-11-01',total:1500,lines:[{label:'Labour',amount:1500}]},
  invoice:{vehicleId:'PASTE-VEHICLE-UUID',repair:'PASTE-REPAIR-UUID',date:'2026-11-01',total:1500,status:'Unpaid'},
