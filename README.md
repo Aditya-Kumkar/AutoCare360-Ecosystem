@@ -7,6 +7,12 @@ A responsive React + TypeScript concept prototype for four role-specific experie
 - Customer App
 - Supplier Marketplace
 
+## Secure Salesforce foundation (optional)
+
+A separate authenticated live-records workspace is available in the role selector. It uses Supabase external sign-in, server-enforced roles and a Vercel/Salesforce CRUD API. It is **not** automatically integrated with existing demo portal records. Salesforce metadata and deployment prerequisites must be configured by the project owner. The original role-specific demos remain local previews.
+
+**Setup:** [Salesforce + Supabase + Vercel instructions](docs/SALESFORCE_LIVE_SETUP.md).
+
 ## Run locally
 
 1. Install Node.js (LTS) if needed.
