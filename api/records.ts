@@ -78,7 +78,14 @@ export default async function handler(req:any,res:any){
       if(user.role==='customer'&&type==='appointment'&&String(data.status||'Pending confirmation')!=='Pending confirmation')throw new ApiError(422,'invalid_initial_status');
       if(user.role==='supplier'&&type==='part'&&Number(data.quantity||0)<0)throw new ApiError(422,'invalid_quantity');
       const normalized={...data};
-      if(type==='appointment'&&user.role==='customer')normalized.status='Pending confirmation';
+      if(type==='appointment')normalized.status='Pending confirmation';
+      if(type==='estimate')normalized.status='Awaiting approval';
+      if(type==='invoice')normalized.status='Unpaid';
+      if(type==='job')normalized.status='Assigned';
+      if(type==='parts_request')normalized.status='Requested';
+      if(type==='purchase_order')normalized.status='Placed';
+      if(type==='repair')normalized.stage=normalized.stage||'Booking received';
+      if(type==='notification')normalized.read=false;
       await requireReference(type,normalized,ownerId as string|null,user.role,user.id);
       const id=crypto.randomUUID();
       await insertRow(type,id,ownerId as string|null,normalized);
