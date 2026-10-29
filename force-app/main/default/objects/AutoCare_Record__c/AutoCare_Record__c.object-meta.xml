@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+  <deploymentStatus>Deployed</deploymentStatus>
+  <description>AutoCare360 secure server-managed integration records. Access exclusively through authenticated API routes.</description>
+  <label>AutoCare Record</label>
+  <pluralLabel>AutoCare Records</pluralLabel>
+  <nameField><label>AutoCare Record Name</label><type>AutoNumber</type><displayFormat>ACR-{000000}</displayFormat></nameField>
+  <sharingModel>Private</sharingModel>
+</CustomObject>

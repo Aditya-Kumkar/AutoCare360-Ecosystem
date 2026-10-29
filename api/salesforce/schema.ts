@@ -1,3 +1,4 @@
+import {requireUser} from '../_lib/auth';
 type SalesforceToken = { access_token: string; instance_url: string; token_type: string };
 
 function json(res: any, status: number, body: unknown) {
@@ -45,6 +46,14 @@ export default async function handler(req: any, res: any) {
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET");
     return json(res, 405, { ok: false, error: "method_not_allowed" });
+  }
+
+  // Schema information is restricted to trusted manager identities.
+  try {
+    const user = await requireUser(req);
+    if (user.role !== 'manager') return json(res, 403, { ok: false, error: 'role_not_permitted' });
+  } catch {
+    return json(res, 401, { ok: false, error: 'authentication_required' });
   }
 
   const objectName = typeof req.query?.object === "string" ? req.query.object : "";
