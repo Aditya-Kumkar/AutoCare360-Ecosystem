@@ -1,7 +1,7 @@
 name: Verify web build
 on:
   push:
-    branches: [main]
+    branches: [main, 'preview/salesforce-integration-test']
   pull_request:
     branches: [main]
 jobs:
@@ -16,4 +16,5 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: node --experimental-strip-types --test tests/*.test.ts
       - run: npm run build

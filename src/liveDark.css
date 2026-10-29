@@ -1,0 +1,78 @@
+/* Dark AutoCare360 theme for the authenticated cloud workspace. Imported after live.css. */
+.ac-auth-shell,.ac-app{font-family:'DM Sans',sans-serif;color:#e9f5fa;background:radial-gradient(ellipse 62% 38% at 80% 0%,#17303a 0,transparent 73%),#090f19;min-height:100vh}
+.ac-auth-shell{justify-content:center}
+.ac-auth-brand{color:#eaf6fa}.ac-auth-brand small{color:#789ea9}
+.ac-auth-card{background:linear-gradient(150deg,#172437,#101b29);border:1px solid #344457;box-shadow:0 25px 70px #0008;color:#eaf5f9}
+.ac-auth-card h1{color:#f0f9fb}
+.ac-auth-card p{color:#93aabb}
+.ac-lock{background:#1e4842;color:#81ecd1}
+.ac-kicker{color:#7ce9cc}
+.ac-auth-form label{color:#c2d4df}
+.ac-auth-form input{border:1px solid #375369;background:#0c1725;color:#e8f5f9;color-scheme:dark}
+.ac-auth-form input::placeholder{color:#6f8a9d}
+.ac-auth-form input:focus{border-color:#5ce9c6;box-shadow:0 0 0 3px #39dcab22}
+.ac-auth-form .ac-primary,.ac-primary{background:linear-gradient(110deg,#63ecd0,#2bb99f);color:#07332c;border:1px solid #79efda}
+.ac-auth-form .ac-primary:hover,.ac-primary:hover{background:#7cf6d8}
+.ac-switch{color:#75efd3}
+.ac-auth-bottom{border-top-color:#304054;color:#91a8b8}
+.ac-auth-footer{color:#728d9e}
+.ac-auth-back{color:#83f1ce}
+.ac-sidebar{background:linear-gradient(155deg,#132133,#0d1421);border-right:1px solid #293b4d;color:#b7d0df}
+.ac-sidebar-brand{color:#f2fbfc}
+.ac-navigation button{color:#9cb5c7}
+.ac-navigation button:hover{background:#223248;color:#fff}
+.ac-navigation button.current{background:linear-gradient(95deg,#205257,#193545);color:#95f9db}
+.ac-nav-heading{color:#7c95a9}
+.ac-workspace-label{color:#8da8ba}
+.ac-sidebar-footer{border-top-color:#2a3f51}
+.ac-sidebar-footer button{color:#9fc7d4}
+.ac-content{color:#e7f3f8}
+.ac-topbar{background:#101b2a;border-bottom:1px solid #2c3a4c;color:#829bae}
+.ac-topbar b{color:#e6f4f8}
+.ac-connected{background:#163b31;border-color:#276a53;color:#9df2cd}
+.ac-connected span{background:#49df9b}
+.ac-body{color:#edf7fa}
+.ac-heading h1{color:#f0f8fb}
+.ac-heading p{color:#89a3b4}
+.ac-secondary{background:#192a3d;border:1px solid #344b5e;color:#d4e8ef}
+.ac-secondary:hover{background:#20384b}
+.ac-stat{background:linear-gradient(145deg,#1a2a3a,#111d2d);border-color:#2a4052;box-shadow:0 10px 30px #0002}
+.ac-stat:hover{border-color:#5bd2bb}
+.ac-stat-icon{background:#235047;color:#81f0d1}
+.ac-stat small{color:#94afc1}
+.ac-stat strong{color:#f1f9fc}
+.ac-stat span{color:#81e8cc}
+.ac-panel{background:#142133;border-color:#2c4156;box-shadow:0 10px 26px #0002;color:#e9f4f9}
+.ac-panel-head{border-bottom-color:#2b3e50}
+.ac-panel-head h2{color:#eaf4f9}
+.ac-panel-head p{color:#90a9b8}
+.ac-panel-head>span{color:#849cae}
+.ac-list-item{background:transparent;color:#cbdfe8;border-bottom-color:#293a4e}
+.ac-list-item:hover{background:#1a3042}
+.ac-list-icon{background:#214840;color:#7ceace}
+.ac-list-item strong{color:#e0f0f6}
+.ac-list-item small{color:#89a4b5}
+.ac-record-meta{color:#6e899b}
+.ac-amount{color:#9becd3}
+.ac-record-actions button{background:#1b3341;border-color:#355668;color:#a5e5d6}
+.ac-record-actions button:hover{background:#25524a}
+.ac-empty{color:#809aae}
+.ac-empty h3{color:#d5e9f1}
+.ac-empty svg{color:#76dac3}
+.ac-empty p{color:#8ba5b6}
+.ac-help{background:#1a383c;border-color:#325e5c;color:#80e7ca}
+.ac-help strong{color:#bdeee4}.ac-help p{color:#9cbdba}
+.ac-search{border-color:#385064;color:#86a2b2;background:#111d2c}
+.ac-search input{color:#e4f2f8}
+.ac-alert{background:#3c242e;color:#ffbbc3;border-color:#8b4b5b}
+.ac-success{background:#193b30;color:#98efc3;border-color:#38785a}
+.ac-field{color:#bfd1de}
+.ac-field input,.ac-field select,.ac-field textarea{background:#0e1a29;border-color:#365265;color:#e5f3fa;color-scheme:dark}
+.ac-field input:focus,.ac-field select:focus,.ac-field textarea:focus{border-color:#72e3cb}
+.ac-field small{color:#8aa5b4}
+.ac-form-actions{border-top-color:#2b4052}
+.ac-content-footer{border-top-color:#2e4151;color:#7f98ab}
+.ac-content-footer button{color:#76dfc1}
+.ac-auth-back{border:0;background:transparent;color:#7cebd0;font-size:12px;font-weight:800;cursor:pointer;padding:0;margin:0 0 22px;display:inline-flex}
+.ac-auth-back:hover{text-decoration:underline}
+@media(max-width:750px){.ac-auth-card{padding:30px 24px}.ac-topbar{padding:0 17px}.ac-mobile-button{color:#8fdcca}}
