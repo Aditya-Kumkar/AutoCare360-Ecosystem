@@ -17,7 +17,7 @@ export const fields: Record<Resource, readonly string[]> = {
 };
 const abilities: Record<Role, Partial<Record<Resource, string>>> = {
   customer:{vehicle:'rcud',appointment:'rcu',repair:'r',estimate:'ru',invoice:'r',notification:'ru',service_history:'r'},
-  technician:{vehicle:'r',appointment:'r',repair:'ru',estimate:'r',job:'rcu',part:'r',parts_request:'rc',service_history:'rc'},
+  technician:{vehicle:'r',appointment:'r',repair:'ru',estimate:'r',job:'ru',part:'r',parts_request:'rc',service_history:'rc'},
   manager:{vehicle:'rcu',appointment:'rcu',repair:'rcu',estimate:'rcu',invoice:'rcu',notification:'rc',job:'rcu',part:'rcu',parts_request:'rcu',purchase_order:'rcu',service_history:'rcu'},
   supplier:{part:'rcu',parts_request:'ru',purchase_order:'ru'}
 };
@@ -76,8 +76,8 @@ export function validatePayload(type:Resource,value:unknown):value is Record<str
  if(Object.keys(v).some(k=>!fields[type].includes(k)))return false;
  if(JSON.stringify(v).length>25000)return false;
  for(const [key,item] of Object.entries(v)){
-   if(['quantity','reorderAt','odometer','total','paid','price','quote'].includes(key)&&(!Number.isFinite(item)||Number(item)<0))return false;
-   if(['quantity','reorderAt','odometer'].includes(key)&&!Number.isInteger(item))return false;
+   if(['quantity','reorderAt','odometer','total','paid','price','quote'].includes(key)&&(typeof item!=='number'||!Number.isFinite(item)||item<0))return false;
+   if(['quantity','reorderAt','odometer'].includes(key)&&(typeof item!=='number'||!Number.isInteger(item)))return false;
    if(key==='lines'&&(!Array.isArray(item)||item.length>40||item.some((line:unknown)=>!line||typeof line!=='object'||typeof (line as any).label!=='string'||!Number.isFinite((line as any).amount)||((line as any).amount)<0)))return false;
    if(key==='checklist'&&(!Array.isArray(item)||item.length>20||item.some((b:unknown)=>typeof b!=='boolean')))return false;
    if(key!=='lines'&&key!=='checklist'&&!['quantity','reorderAt','odometer','total','paid','price','quote','read'].includes(key)&&typeof item!=='string')return false;
