@@ -27,7 +27,7 @@ async function list(type:Resource,role:Role,userId:string){
   }
   return rows.map(fromRow);
 }
-async function requireReference(type:Resource,data:Record<string,unknown>,owner:string|null,role:Role){
+async function requireReference(type:Resource,data:Record<string,unknown>,owner:string|null,role:Role,callerId:string){
   const rels:Partial<Record<Resource,{key:string;resource:Resource}[]>>={
     appointment:[{key:'vehicleId',resource:'vehicle'}],
     repair:[{key:'vehicleId',resource:'vehicle'}],
@@ -52,7 +52,7 @@ async function requireReference(type:Resource,data:Record<string,unknown>,owner:
   }
   if(role==='technician'&&(type==='parts_request'||type==='service_history')){
     const jobs=(await queryRows('job')).map(fromRow);
-    if(!jobs.some(j=>j.data.repairId===data.repairId&&j.data.technician===owner))throw new ApiError(403,'technician_assignment_required');
+    if(!jobs.some(j=>j.data.repairId===data.repairId&&j.data.technician===callerId))throw new ApiError(403,'technician_assignment_required');
   }
 }
 export default async function handler(req:any,res:any){
@@ -79,7 +79,7 @@ export default async function handler(req:any,res:any){
       if(user.role==='supplier'&&type==='part'&&Number(data.quantity||0)<0)throw new ApiError(422,'invalid_quantity');
       const normalized={...data};
       if(type==='appointment'&&user.role==='customer')normalized.status='Pending confirmation';
-      await requireReference(type,normalized,ownerId as string|null,user.role);
+      await requireReference(type,normalized,ownerId as string|null,user.role,user.id);
       const id=crypto.randomUUID();
       await insertRow(type,id,ownerId as string|null,normalized);
       return send(res,201,{ok:true,record:{id,type,ownerId,data:normalized}});
