@@ -12,12 +12,12 @@ const defaults:Record<Resource,Record<string,unknown>>={
  appointment:{vehicleId:'PASTE-VEHICLE-UUID',service:'Routine maintenance',issue:'Scheduled service',date:'2026-11-01',time:'10:30 AM',created:'Today'},
  repair:{vehicleId:'PASTE-VEHICLE-UUID',service:'Inspection',stage:'Booking received',update:'Booking received.',date:'2026-11-01',completion:'To be assessed'},
  estimate:{vehicleId:'PASTE-VEHICLE-UUID',repair:'PASTE-REPAIR-UUID',date:'2026-11-01',total:1500,lines:[{label:'Labour',amount:1500}]},
- invoice:{vehicleId:'PASTE-VEHICLE-UUID',repair:'PASTE-REPAIR-UUID',date:'2026-11-01',total:1500,status:'Unpaid'},
+ invoice:{vehicleId:'PASTE-VEHICLE-UUID',repair:'PASTE-REPAIR-UUID',date:'2026-11-01',total:1500},
  notification:{title:'Service update',body:'Your appointment is being reviewed.',time:'Just now',read:false,page:'Appointments'},
- job:{repairId:'PASTE-REPAIR-UUID',technician:'SUPABASE-USER-UUID',status:'Assigned',checklist:[false,false,false,false],notes:''},
+ job:{repairId:'PASTE-REPAIR-UUID',technician:'SUPABASE-USER-UUID',checklist:[false,false,false,false],notes:''},
  part:{name:'Oil filter',sku:'OIL-FLT-001',quantity:12,reorderAt:4,price:450},
- parts_request:{repairId:'PASTE-REPAIR-UUID',partId:'PASTE-PART-UUID',quantity:1,status:'Requested'},
- purchase_order:{requestId:'PASTE-REQUEST-UUID',status:'Placed',date:'2026-11-01'},
+ parts_request:{repairId:'PASTE-REPAIR-UUID',partId:'PASTE-PART-UUID',quantity:1},
+ purchase_order:{requestId:'PASTE-REQUEST-UUID',date:'2026-11-01'},
  service_history:{vehicleId:'PASTE-VEHICLE-UUID',date:'2026-11-01',service:'Oil change',detail:'Oil and filter replaced.',km:'28000',amount:'2500'}
 };
 const titles:Record<Resource,string>={vehicle:'Vehicles',appointment:'Appointments',repair:'Repair orders',estimate:'Estimates',invoice:'Invoices',notification:'Notifications',job:'Technician jobs',part:'Inventory parts',parts_request:'Parts requests',purchase_order:'Purchase orders',service_history:'Service history'};
