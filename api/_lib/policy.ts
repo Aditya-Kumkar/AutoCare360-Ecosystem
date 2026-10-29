@@ -17,7 +17,7 @@ export const fields: Record<Resource, readonly string[]> = {
 };
 const abilities: Record<Role, Partial<Record<Resource, string>>> = {
   customer:{vehicle:'rcud',appointment:'rcu',repair:'r',estimate:'ru',invoice:'r',notification:'ru',service_history:'r'},
-  technician:{vehicle:'r',appointment:'r',repair:'ru',estimate:'r',job:'ru',part:'r',parts_request:'rc',service_history:'rc'},
+  technician:{vehicle:'r',appointment:'r',repair:'ru',estimate:'r',job:'ru',part:'r',parts_request:'rc',service_history:'r'},
   manager:{vehicle:'rcu',appointment:'rcu',repair:'rcu',estimate:'rcu',invoice:'rcu',notification:'rc',job:'rcu',part:'rcu',parts_request:'rcu',purchase_order:'rcu',service_history:'rcu'},
   supplier:{part:'rcu',parts_request:'ru',purchase_order:'ru'}
 };
@@ -66,7 +66,9 @@ export function validTransition(role:Role,type:Resource,before:Record<string,unk
    return old>=0&&next>=0&&next>=old&&next<=old+1;
  }
  if(type==='job'&&'status' in patch){
-   return ['Assigned','In progress','Inspection complete','Quality passed'].includes(String(patch.status));
+   const states=['Assigned','In progress','Inspection complete','Quality passed'];
+   const from=states.indexOf(String(before.status)),to=states.indexOf(String(patch.status));
+   return from>=0&&to>=0&&to>=from&&to<=from+1;
  }
  return true;
 }
