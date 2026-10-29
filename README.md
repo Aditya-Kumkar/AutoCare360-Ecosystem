@@ -21,11 +21,22 @@ A responsive React + TypeScript concept prototype for four role-specific experie
 
 5. Open the local URL printed by Vite (typically `http://localhost:5173`).
 
+## October 2026 — expanded role workflows
+
+The technician, service manager and supplier workspaces now include working browser-demo screens beyond the original summary dashboards:
+
+- **Technician:** assigned job list, inspection checklists and notes, parts requests, repair progress stages and quality checks.
+- **Service manager:** appointment confirmation/cancellation, creating and assigning work orders from confirmed appointments, issuing customer-visible estimates, generating unpaid invoices for completed repairs, inventory monitoring and purchasing from supplier quotes.
+- **Supplier:** parts catalogue with reorder levels, incoming parts requests, quotations, purchase-order visibility and delivery transitions that replenish demo stock.
+- **Cross-workspace updates:** staff actions share customer booking, repair, estimate and invoice state with the customer portal and write customer-visible in-app notifications. Operational records persist in this browser's localStorage.
+
+**Important limitations:** These workflows are for demonstration, not production. Role selection is not authentication or authorization. Data lives in one browser and is not synced between different users/devices or Salesforce. Notifications are local only. The demo does not submit real orders, issue legally binding invoices, send emails/SMS, or process payments. The existing Salesforce schema endpoint only discovers objects; mapping and securing live CRUD requires credentials and verified Salesforce object names. The sample technician jobs and supplier records are seeded demo records.
+
 ## Current state
 
-This is a frontend demonstration using illustrative, in-memory data. It includes role switching, dashboard views, a service Kanban board, appointment calendar, vehicle cards, technician workload, inventory, supplier offers, modal forms and local demo status updates.
+This is a frontend demonstration using illustrative, in-memory data. It includes role switching, dashboards, customer bookings and tracking, technician inspections and repair progress, workshop scheduling, estimates and invoicing, supplier quotes, inventory and purchase-order demo workflows.
 
-It is **not connected to Salesforce yet**. Changes are local to the current browser session; authentication, API integration, persistence, record-level authorization, live notifications and production workflows are not implemented. The supplier and customer screens contain illustrative data. Supplier offer review does not place a real purchase order.
+It is **not connected to Salesforce yet**. Changes are persisted in this browser's localStorage; authentication, API integration, persistence, record-level authorization, live notifications and production workflows are not implemented. The supplier and customer screens contain illustrative data. Purchase orders are browser-demo records, not real supplier transactions.
 
 ## Next integration phase
 
