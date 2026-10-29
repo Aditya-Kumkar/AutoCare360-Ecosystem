@@ -9,6 +9,7 @@ import {
   Wallet, CalendarCheck, ClipboardList, CircleDollarSign
 } from 'lucide-react';
 import './styles.css';
+import OperationsWorkspace from './OperationsWorkspace';
 
 type Page = 'Overview' | 'My vehicles' | 'Book a service' | 'Appointments' | 'Service tracking' | 'Estimates' | 'Invoices' | 'Service history' | 'Notifications' | 'Profile & settings' | 'Help & support';
 type Vehicle = { id: string; make: string; model: string; year: string; plate: string; fuel: string; odometer: number; nickname: string; lastService: string };
@@ -104,7 +105,7 @@ function App(){
   const vehicleById=(id:string)=>vehicles.find(v=>v.id===id);
   const filteredVehicles=useMemo(()=>vehicles.filter(v=>`${v.make} ${v.model} ${v.plate}`.toLowerCase().includes(search.toLowerCase())),[vehicles,search]);
   const activeRepair=repairs[0];
-  if(selectedRole&&roleWorkspace)return <RoleWorkspace role={selectedRole as 'Technician'|'Service Manager'|'Supplier'} onBack={()=>{setRoleWorkspace(false);setSelectedRole(null);setLoginPassword('');setShowRoleHome(true);}} onCustomerPreview={()=>{setRoleWorkspace(false);setSelectedRole(null);setShowRoleHome(false);setPage('Overview');}}/>;
+  if(selectedRole&&roleWorkspace)return <OperationsWorkspace role={selectedRole as 'Technician'|'Service Manager'|'Supplier'} vehicles={vehicles} bookings={bookings} repairs={repairs} estimates={estimates} invoices={invoices} setBookings={setBookings} setRepairs={setRepairs} setEstimates={setEstimates} setInvoices={setInvoices} onNotify={(title,body,page)=>setNotices(old=>[{id:'N-'+Date.now()+'-'+Math.random().toString(36).slice(2,5),title,body,time:'Just now',read:false,page},...old])} onBack={()=>{setRoleWorkspace(false);setSelectedRole(null);setLoginPassword('');setShowRoleHome(true);}} onCustomerPreview={()=>{setRoleWorkspace(false);setSelectedRole(null);setShowRoleHome(false);setPage('Overview');}}/>;
   if(showRoleHome)return <RoleHome onSelect={role=>{setSelectedRole(role);setLoginEmail('');setLoginPassword('');if(role==='Customer'){setRoleWorkspace(false);setShowRoleHome(false);setPage('Overview');}else{setRoleWorkspace(true);setShowRoleHome(false);}}}/>;
   if(showLanding)return <PublicLanding onBook={()=>{setShowLanding(false);go('Book a service');setModal('booking');}} onServices={()=>{setShowLanding(false);go('Book a service');}} onSignIn={()=>{setShowLanding(false);setShowRoleHome(true);}}/>;
   return <div className="customer-shell">
